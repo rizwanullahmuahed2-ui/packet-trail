@@ -34,6 +34,7 @@ function formatDuration(value) {
 }
 
 function timestamp(value, short = false) {
+  if (value === null || value === undefined) return "Timestamp unavailable";
   const date = new Date(typeof value === "number" ? value * 1000 : value);
   if (Number.isNaN(date.getTime())) return "Timestamp unavailable";
   return short
@@ -59,6 +60,8 @@ function setLoading(value) {
     button.disabled = value;
   });
   $("capture-file").disabled = value;
+  $("export-json").disabled = value || !report;
+  $("export-csv").disabled = value || !report;
   $("main").setAttribute("aria-busy", String(value));
 }
 
@@ -81,13 +84,14 @@ async function analyze(url, options = {}) {
     report = data;
     sortKey = "packets";
     sortDirection = -1;
+    $("conversation-search").value = "";
     renderReport();
     setStatus("");
   } catch (error) {
     setStatus(
       error instanceof TypeError
         ? "Unable to reach the local analyzer. Check that the Packet Trail server is running, then try again."
-        : error.message,
+        : `${error.message}${report ? ` Still showing ${report.name}.` : ""}`,
       "error",
     );
   } finally {

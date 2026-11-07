@@ -1,6 +1,8 @@
 # Packet Trail
 
-Open a small packet capture and see what happened: which protocols were present, which endpoints talked, when traffic increased, and which records need a closer look.
+[![Parser and API checks](https://github.com/rizwanullahmuahed2-ui/packet-trail/actions/workflows/checks.yml/badge.svg)](https://github.com/rizwanullahmuahed2-ui/packet-trail/actions/workflows/checks.yml)
+
+Open a packet capture to see which endpoints talked, which protocols they used, and when traffic increased. This is a small networking project for practicing packet parsing and traffic analysis.
 
 Packet Trail is a local FastAPI application with a browser dashboard and a command-line interface. It reads **classic Ethernet PCAP** files offline. It does not capture live traffic or send probes. Two bundled synthetic captures let you try the full interface without collecting network data.
 
@@ -21,6 +23,8 @@ uvicorn packet_trail.app:app --host 127.0.0.1 --port 8080
 Visit **http://127.0.0.1:8080**. Choose *Steady conversations* first, then *A concentrated SYN burst*. The baseline contains 144 packets; the second fixture adds 240 initial SYN packets in one second. The dashboard shows the measurements behind each flag, with protocol distribution, a time chart, searchable/sortable directional conversations and JSON/CSV export.
 
 ## CLI
+
+For a short example using the Python API, run `python examples/inspect_capture.py` after installation. The baseline reports 144 packets and no flags; the burst reports 384 packets and two flags.
 
 ```sh
 packet-trail packet_trail/samples/normal.pcap -o report.json

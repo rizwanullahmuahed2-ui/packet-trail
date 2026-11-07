@@ -19,7 +19,7 @@
         ><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span
         ><span
           >packet<span class="brand-light">trail</span
-          ><small>CAPTURE INTELLIGENCE</small></span
+          ><small>OFFLINE PCAP ANALYZER</small></span
         ></a
       >
       <div class="workspace-label">WORKSPACE <span>01</span></div>
@@ -67,10 +67,11 @@
       <main id="main" tabindex="-1">
         <section class="page-heading">
           <div>
-            <div class="eyebrow">YOUR NETWORK, IN FOCUS</div>
+            <div class="eyebrow">CLASSIC PCAP / LOCAL ANALYSIS</div>
             <h1>Capture workspace<span>.</span></h1>
             <p>
-              Follow traffic patterns. Inspect conversations. Find the evidence.
+              Open a capture to inspect protocols, connections and traffic over
+              time.
             </p>
           </div>
           <button id="export-json" class="button button-secondary" disabled>
@@ -276,7 +277,7 @@
                   <span id="conversation-count" class="count-pill">0</span>
                 </h2>
               </div>
-              <button id="export-csv" class="button button-text">
+              <button id="export-csv" class="button button-text" disabled>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M12 3v12m-4-4 4 4 4-4M5 15v5h14v-5" /></svg
                 >Export CSV
